@@ -83,7 +83,7 @@ class _XmlEventEncoderSink extends ChunkedConversionSink<List<XmlEvent>>
   void visitDoctypeEvent(XmlDoctypeEvent event) {
     sink.add(XmlToken.openDoctype);
     sink.add(XmlToken.whitespace);
-    sink.add(event.text);
+    sink.add(event.name);
     sink.add(XmlToken.closeDoctype);
   }
 

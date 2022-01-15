@@ -76,7 +76,16 @@ class XmlEventDefinition extends XmlProductionDefinition {
       super.processing().map((each) => XmlProcessingEvent(each[1], each[2]));
 
   @override
-  Parser doctype() => super.doctype().map((each) => XmlDoctypeEvent(each[2]));
+  Parser doctype() => super.doctype().map((each) =>
+      XmlDoctypeEvent(each[2], each[4]?[0], each[4]?[1], each[6]?[1]));
+
+  @override
+  Parser doctypeSystemId() =>
+      super.doctypeSystemId().map((each) => [null, each[2]?[0]]);
+
+  @override
+  Parser doctypePublicId() =>
+      super.doctypePublicId().map((each) => [each[2]?[0], each[4]?[0]]);
 }
 
 final XmlCache<XmlEntityMapping, Parser> eventParserCache =

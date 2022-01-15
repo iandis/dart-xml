@@ -64,16 +64,32 @@ class XmlProductionDefinition extends GrammarDefinition {
   Parser doctype() => XmlToken.openDoctype
       .toParser()
       .seq(ref0(space))
-      .seq(ref0(nameToken)
-          .or(ref0(attributeValue))
-          .or(XmlToken.openDoctypeBlock
-              .toParser()
-              .seq(any().starLazy(XmlToken.closeDoctypeBlock.toParser()))
-              .seq(XmlToken.closeDoctypeBlock.toParser()))
-          .separatedBy(ref0(spaceOptional))
-          .flatten('Expected doctype content'))
+      .seq(ref0(qualified))
+      .seq(ref0(spaceOptional))
+      .seq(ref0(doctypeExternalId).optional())
+      .seq(ref0(spaceOptional))
+      .seq(ref0(doctypeInternalSubset).optional())
       .seq(ref0(spaceOptional))
       .seq(XmlToken.closeDoctype.toParser());
+
+  Parser doctypeExternalId() => ref0(doctypeSystemId).or(ref0(doctypePublicId));
+
+  Parser doctypeSystemId() =>
+      XmlToken.systemId.toParser().seq(ref0(space)).seq(ref0(doctypeLiteralId));
+
+  Parser doctypePublicId() => XmlToken.publicId
+      .toParser()
+      .seq(ref0(space))
+      .seq(ref0(doctypeLiteralId))
+      .seq(ref0(space))
+      .seq(ref0(doctypeLiteralId));
+
+  Parser doctypeLiteralId() => ref0(attributeValue);
+
+  Parser doctypeInternalSubset() => XmlToken.openDoctypeBlock
+      .toParser()
+      .seq(any().starLazy(XmlToken.closeDoctypeBlock.toParser()).flatten())
+      .seq(XmlToken.closeDoctypeBlock.toParser());
 
   Parser document() => ref0(declaration)
       .optional()

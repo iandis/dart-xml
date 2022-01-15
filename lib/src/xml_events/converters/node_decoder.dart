@@ -64,8 +64,10 @@ class _XmlNodeDecoderSink extends ChunkedConversionSink<List<XmlEvent>>
       commit(XmlDeclaration(convertAttributes(event.attributes)), event);
 
   @override
-  void visitDoctypeEvent(XmlDoctypeEvent event) =>
-      commit(XmlDoctype(event.text), event);
+  void visitDoctypeEvent(XmlDoctypeEvent event) => commit(
+      XmlDoctype(XmlName.fromString(event.name), event.publicId, event.systemId,
+          event.internalSubset),
+      event);
 
   @override
   void visitEndElementEvent(XmlEndElementEvent event) {

@@ -20,7 +20,8 @@ abstract class XmlGrammarDefinition<TNode, TName>
 
   TNode createDeclaration(Iterable<TNode> attributes);
 
-  TNode createDoctype(String text);
+  TNode createDoctype(
+      TName name, String? publicId, String? systemId, String? internalSubset);
 
   TNode createDocument(Iterable<TNode> children);
 
@@ -64,7 +65,16 @@ abstract class XmlGrammarDefinition<TNode, TName>
   Parser cdata() => super.cdata().map((each) => createCDATA(each[1]));
 
   @override
-  Parser doctype() => super.doctype().map((each) => createDoctype(each[2]));
+  Parser doctype() => super.doctype().map(
+      (each) => createDoctype(each[2], each[4]?[0], each[4]?[1], each[6]?[1]));
+
+  @override
+  Parser doctypeSystemId() =>
+      super.doctypeSystemId().map((each) => [null, each[2]?[0]]);
+
+  @override
+  Parser doctypePublicId() =>
+      super.doctypePublicId().map((each) => [each[2]?[0], each[4]?[0]]);
 
   @override
   Parser document() => super.document().map((each) {

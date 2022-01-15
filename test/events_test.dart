@@ -92,8 +92,12 @@ void main() {
         final event = iterator.current as XmlDoctypeEvent;
         assertComplete(iterator);
         expect(event.nodeType, XmlNodeType.DOCUMENT_TYPE);
-        expect(event.text, 'html');
-        final other = XmlDoctypeEvent(event.text);
+        expect(event.name, 'html');
+        expect(event.publicId, isNull);
+        expect(event.systemId, isNull);
+        expect(event.internalSubset, isNull);
+        final other = XmlDoctypeEvent(
+            event.name, event.publicId, event.systemId, event.internalSubset);
         expect(event, other);
         expect(event.hashCode, other.hashCode);
       });
@@ -500,7 +504,7 @@ void main() {
         XmlCDATAEvent('cdata'),
         XmlCommentEvent('comment'),
         XmlDeclarationEvent([]),
-        XmlDoctypeEvent('doctype'),
+        XmlDoctypeEvent('doctype', null, null, null),
         XmlProcessingEvent('target', 'text'),
         XmlStartElementEvent('element', [], true),
         XmlTextEvent('text'),
@@ -520,7 +524,7 @@ void main() {
         XmlCDATAEvent('cdata'),
         XmlCommentEvent('comment'),
         XmlDeclarationEvent([]),
-        XmlDoctypeEvent('doctype'),
+        XmlDoctypeEvent('doctype', null, null, null),
         XmlProcessingEvent('target', 'text'),
         XmlStartElementEvent('element', [], true),
         XmlTextEvent('text'),

@@ -19,6 +19,8 @@ class XmlToken {
   static const String closeDoctype = '>';
   static const String openDoctypeBlock = '[';
   static const String closeDoctypeBlock = ']';
+  static const String publicId = 'PUBLIC';
+  static const String systemId = 'SYSTEM';
   static const String openProcessing = '<?';
   static const String closeProcessing = '?>';
 }

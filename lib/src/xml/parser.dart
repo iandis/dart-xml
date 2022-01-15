@@ -34,7 +34,9 @@ class XmlParserDefinition extends XmlGrammarDefinition<XmlNode, XmlName> {
       XmlDeclaration(attributes.cast<XmlAttribute>());
 
   @override
-  XmlDoctype createDoctype(String text) => XmlDoctype(text);
+  XmlDoctype createDoctype(XmlName name, String? publicId, String? systemId,
+          String? internalSubset) =>
+      XmlDoctype(name, publicId, systemId, internalSubset);
 
   @override
   XmlDocument createDocument(Iterable<XmlNode> children) =>

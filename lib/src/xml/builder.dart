@@ -96,8 +96,13 @@ class XmlBuilder {
   ///
   ///     builder.doctype('note SYSTEM "Note.dtd"');
   ///
-  void doctype(Object text) {
-    _stack.last.children.add(XmlDoctype(text.toString()));
+  void doctype(String name,
+      {String? namespace,
+      String? publicId,
+      String? systemId,
+      String? internalSubset}) {
+    _stack.last.children.add(XmlDoctype(
+        _buildName(name, namespace), publicId, systemId, internalSubset));
   }
 
   /// Adds a [XmlProcessing] node with the provided [target] and [text].

@@ -439,7 +439,12 @@ void assertIteratorEventInvariants(String input, XmlNode node) {
     } else if (event is XmlDoctypeEvent) {
       final expected = nodes.removeAt(0) as XmlDoctype;
       expect(event.nodeType, expected.nodeType);
-      expect(event.text, expected.text);
+      expect(event.name, expected.name.qualified);
+      expect(event.localName, expected.name.local);
+      expect(event.namespacePrefix, expected.name.prefix);
+      expect(event.publicId, expected.publicId);
+      expect(event.systemId, expected.systemId);
+      expect(event.internalSubset, expected.internalSubset);
     } else if (event is XmlDeclarationEvent) {
       final expected = nodes.removeAt(0) as XmlDeclaration;
       expect(event.nodeType, expected.nodeType);
@@ -531,7 +536,14 @@ void assertStreamEventInvariants(String input, XmlNode node) {
     } else if (event is XmlDoctypeEvent) {
       final expected = nodes.removeAt(0) as XmlDoctype;
       expect(event.nodeType, expected.nodeType);
-      expect(event.text, expected.text);
+      expect(event.name, expected.name.qualified);
+      expect(event.qualifiedName, expected.name.qualified);
+      expect(event.localName, expected.name.local);
+      expect(event.namespacePrefix, expected.name.prefix);
+      expect(event.namespaceUri, expected.name.namespaceUri);
+      expect(event.publicId, expected.publicId);
+      expect(event.systemId, expected.systemId);
+      expect(event.internalSubset, expected.internalSubset);
     } else if (event is XmlDeclarationEvent) {
       final expected = nodes.removeAt(0) as XmlDeclaration;
       expect(event.nodeType, expected.nodeType);

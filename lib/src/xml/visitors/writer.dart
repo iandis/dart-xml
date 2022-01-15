@@ -1,6 +1,7 @@
 import '../entities/default_mapping.dart';
 import '../entities/entity_mapping.dart';
 import '../mixins/has_attributes.dart';
+import '../mixins/has_identifier.dart';
 import '../mixins/has_visitor.dart';
 import '../nodes/attribute.dart';
 import '../nodes/cdata.dart';
@@ -57,7 +58,15 @@ class XmlWriter with XmlVisitor {
   void visitDoctype(XmlDoctype node) {
     buffer.write(XmlToken.openDoctype);
     buffer.write(XmlToken.whitespace);
-    buffer.write(node.text);
+    buffer.write(node.name);
+    writeIdentifier(node);
+    final internalSubset = node.internalSubset;
+    if (internalSubset != null && internalSubset.isNotEmpty) {
+      buffer.write(XmlToken.whitespace);
+      buffer.write(XmlToken.openDoctypeBlock);
+      buffer.write(internalSubset);
+      buffer.write(XmlToken.closeDoctypeBlock);
+    }
     buffer.write(XmlToken.closeDoctype);
   }
 
@@ -112,6 +121,31 @@ class XmlWriter with XmlVisitor {
     if (node.attributes.isNotEmpty) {
       buffer.write(XmlToken.whitespace);
       writeIterable(node.attributes, XmlToken.whitespace);
+    }
+  }
+
+  void writeIdentifier(XmlHasIdentifier node) {
+    final publicId = node.publicId;
+    final hasPublicId = publicId != null && publicId.isNotEmpty;
+    if (hasPublicId) {
+      buffer.write(XmlToken.whitespace);
+      buffer.write(XmlToken.publicId);
+      buffer.write(XmlToken.whitespace);
+      buffer.write(XmlToken.doubleQuote);
+      buffer.write(publicId);
+      buffer.write(XmlToken.doubleQuote);
+    }
+    final systemId = node.systemId;
+    final hasSystemId = systemId != null && systemId.isNotEmpty;
+    if (hasSystemId) {
+      if (!hasPublicId) {
+        buffer.write(XmlToken.whitespace);
+        buffer.write(XmlToken.systemId);
+      }
+      buffer.write(XmlToken.whitespace);
+      buffer.write(XmlToken.doubleQuote);
+      buffer.write(systemId);
+      buffer.write(XmlToken.doubleQuote);
     }
   }
 

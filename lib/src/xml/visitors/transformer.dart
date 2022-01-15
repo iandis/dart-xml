@@ -33,7 +33,8 @@ class XmlTransformer with XmlVisitor {
       XmlDeclaration(node.attributes.map(visit));
 
   @override
-  XmlDoctype visitDoctype(XmlDoctype node) => XmlDoctype(node.text);
+  XmlDoctype visitDoctype(XmlDoctype node) => XmlDoctype(
+      visit(node.name), node.publicId, node.systemId, node.internalSubset);
 
   @override
   XmlDocument visitDocument(XmlDocument node) =>

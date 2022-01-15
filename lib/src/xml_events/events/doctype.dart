@@ -1,12 +1,20 @@
 import '../../xml/utils/node_type.dart';
 import '../event.dart';
+import '../utils/named.dart';
 import '../visitor.dart';
 
 /// Event of an XML doctype node.
-class XmlDoctypeEvent extends XmlEvent {
-  XmlDoctypeEvent(this.text);
+class XmlDoctypeEvent extends XmlEvent with XmlNamed {
+  XmlDoctypeEvent(this.name, this.publicId, this.systemId, this.internalSubset);
 
-  final String text;
+  @override
+  final String name;
+
+  final String? publicId;
+
+  final String? systemId;
+
+  final String? internalSubset;
 
   @override
   XmlNodeType get nodeType => XmlNodeType.DOCUMENT_TYPE;
@@ -15,9 +23,14 @@ class XmlDoctypeEvent extends XmlEvent {
   void accept(XmlEventVisitor visitor) => visitor.visitDoctypeEvent(this);
 
   @override
-  int get hashCode => nodeType.hashCode ^ text.hashCode;
+  int get hashCode =>
+      Object.hash(nodeType, name, publicId, systemId, internalSubset);
 
   @override
   bool operator ==(Object other) =>
-      other is XmlDoctypeEvent && other.text == text;
+      other is XmlDoctypeEvent &&
+      other.name == name &&
+      other.publicId == publicId &&
+      other.systemId == systemId &&
+      other.internalSubset == internalSubset;
 }
