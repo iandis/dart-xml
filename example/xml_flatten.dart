@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:args/args.dart' as args;
-import 'package:xml/xml_events.dart';
+import 'package:dartxml/xml_events.dart';
 
 final formatRegExp = RegExp(r'%(.)');
 

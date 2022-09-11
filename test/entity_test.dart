@@ -1,8 +1,8 @@
 import 'package:petitparser/core.dart';
 import 'package:petitparser/matcher.dart';
 import 'package:test/test.dart';
-import 'package:xml/src/xml/utils/character_data_parser.dart';
-import 'package:xml/xml.dart';
+import 'package:dartxml/src/xml/utils/character_data_parser.dart';
+import 'package:dartxml/xml.dart';
 
 void testDefaultMapping(XmlEntityMapping entityMapping) {
   group('decode', () {

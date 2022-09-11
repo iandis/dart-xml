@@ -1,6 +1,6 @@
+import 'package:dartxml/xml.dart';
+import 'package:dartxml/xpath.dart';
 import 'package:test/test.dart';
-import 'package:xml/xml.dart';
-import 'package:xml/xpath.dart';
 
 Matcher isXmlNode({XmlNode? node, XmlNodeType? nodeType, String? outerXml}) {
   var matcher = isA<XmlNode>();

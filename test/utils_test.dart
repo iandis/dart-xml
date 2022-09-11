@@ -1,8 +1,8 @@
+import 'package:dartxml/src/xml/entities/null_mapping.dart';
+import 'package:dartxml/src/xml/utils/cache.dart';
+import 'package:dartxml/src/xml_events/parser.dart';
 import 'package:petitparser/reflection.dart';
 import 'package:test/test.dart';
-import 'package:xml/src/xml/entities/null_mapping.dart';
-import 'package:xml/src/xml/utils/cache.dart';
-import 'package:xml/src/xml_events/parser.dart';
 
 void main() {
   group('cache', () {

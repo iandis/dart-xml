@@ -4,7 +4,7 @@ library;
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:xml/xml.dart';
+import 'package:dartxml/xml.dart';
 
 final HttpClient httpClient = HttpClient();
 
