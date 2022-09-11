@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:xml/xml.dart';
-import 'package:xml/xml_events.dart';
+import 'package:dartxml/xml.dart';
+import 'package:dartxml/xml_events.dart';
 
 import 'examples.dart';
 

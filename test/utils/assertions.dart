@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:xml/xml.dart';
-import 'package:xml/xml_events.dart';
+import 'package:dartxml/xml.dart';
+import 'package:dartxml/xml_events.dart';
 
 void assertDocumentParseInvariants(String input) {
   final document = XmlDocument.parse(input);

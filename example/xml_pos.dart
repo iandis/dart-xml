@@ -4,7 +4,7 @@ import 'dart:math';
 
 import 'package:args/args.dart' as args;
 import 'package:petitparser/petitparser.dart';
-import 'package:xml/xml_events.dart';
+import 'package:dartxml/xml_events.dart';
 
 final args.ArgParser argumentParser = args.ArgParser()
   ..addOption(

@@ -1,4 +1,4 @@
-name: xml
+name: dartxml
 version: 6.1.0
 
 description: A lightweight library for parsing, traversing, querying, transforming and building XML documents.

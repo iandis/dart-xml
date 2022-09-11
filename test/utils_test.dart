@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:xml/src/xml/utils/cache.dart';
+import 'package:dartxml/src/xml/utils/cache.dart';
 
 void main() {
   group('cache', () {

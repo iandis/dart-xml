@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:xml/xml.dart';
+import 'package:dartxml/xml.dart';
 
 void main() {
   group('normalizer', () {

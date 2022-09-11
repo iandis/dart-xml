@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use_from_same_package
 
 import 'package:test/test.dart';
-import 'package:xml/xml_events.dart';
+import 'package:dartxml/xml_events.dart';
 
 import 'utils/examples.dart';
 import 'utils/matchers.dart';

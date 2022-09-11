@@ -5,8 +5,8 @@ import 'dart:math' show min, Random;
 
 import 'package:meta/meta.dart';
 import 'package:test/test.dart';
-import 'package:xml/xml.dart';
-import 'package:xml/xml_events.dart';
+import 'package:dartxml/xml.dart';
+import 'package:dartxml/xml_events.dart';
 
 import 'utils/assertions.dart';
 import 'utils/examples.dart';

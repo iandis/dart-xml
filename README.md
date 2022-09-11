@@ -26,7 +26,7 @@ Follow the installation instructions on [dart packages](https://pub.dev/packages
 Import the library into your Dart code using:
 
 ```dart
-import 'package:xml/xml.dart';
+import 'package:dartxml/xml.dart';
 ```
 
 :warning: This library makes extensive use of [static extension methods](https://dart.dev/guides/language/extension-methods). If you [import the library](https://dart.dev/guides/language/language-tour#using-libraries) using a _library prefix_ or only _selectively show classes_ you might miss some of its functionality. For historical reasons public classes have an `Xml` prefix, so conflicts with other code should be rare.
@@ -191,7 +191,7 @@ document.rootElement.children.add(builder.buildFragment());
 Reading large XML files and instantiating their DOM into the memory can be expensive. As an alternative this library provides the possibility to read and transform XML documents as a sequence of events using Dart Iterables or [Streams](https://dart.dev/tutorials/language/streams). These approaches are comparable to event-driven SAX parsing known from other libraries.
 
 ```dart
-import 'package:xml/xml_events.dart';
+import 'package:dartxml/xml_events.dart';
 ```
 
 #### Iterables
