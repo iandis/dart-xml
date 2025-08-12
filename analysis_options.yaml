@@ -4,6 +4,9 @@ analyzer:
     strict-casts: true
     strict-inference: true
     strict-raw-types: true
+formatter:
+  trailing_commas: preserve
+  page_width: 120
 linter:
   rules:
     - annotate_redeclares
