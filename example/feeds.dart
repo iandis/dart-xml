@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
-import 'package:xml/xml.dart';
+import 'package:dartxml/xml.dart';
 
 abstract class RssCommand extends Command<void> {
   String get feedsName =>
