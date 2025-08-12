@@ -1,8 +1,8 @@
+import 'package:dartxml/src/xpath/parser.dart';
+import 'package:dartxml/xml.dart';
+import 'package:dartxml/xpath.dart';
 import 'package:petitparser/reflection.dart';
 import 'package:test/test.dart';
-import 'package:xml/src/xpath/parser.dart';
-import 'package:xml/xml.dart';
-import 'package:xml/xpath.dart';
 
 import 'utils/examples.dart';
 import 'utils/matchers.dart';
